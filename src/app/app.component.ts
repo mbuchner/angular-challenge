@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GridService } from './services/grid.service';
+import { RobotService } from './services/robot.service';
 
 @Component({
   selector: 'my-app',
@@ -8,6 +9,6 @@ import { GridService } from './services/grid.service';
 })
 export class AppComponent  {
   name = 'Angular';
-  constructor(private gridService: GridService){}
+  constructor(private gridService: GridService, private robotService: RobotService){}
 
 }
