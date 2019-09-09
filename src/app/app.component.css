@@ -1,19 +1,19 @@
-.mars2 {
-  background-image: url('/mars.jpg');
+
+.mars {
+  background-image: url('https://cdn.jsdelivr.net/gh/mbuchner/angular-challenge@master/src/assets/mars.jpg');
   background-color: #cccccc;
-  height: 500px; 
   background-position: left; 
   background-repeat: no-repeat; 
   background-size: cover;
+  height: 100vh;
 }
 
-.mars3 {
-  background-image: url('https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg');
-  background-color: #cccccc;
-  height: 500px; 
-  background-position: left; 
-  background-repeat: no-repeat; 
-  background-size: cover;
+.robotGrid {
+  color: #FFF;
+}
+
+.robotGrid td {
+  border: solid 1px #FFF;
 }
 
 p {
