@@ -9,6 +9,7 @@
 }
 
 .robotGrid {
+  font-family: Arial, Helvetica, sans-serif;
   color: #FFF;
   border-spacing: 0px;
   border-collapse: collapse;
@@ -21,12 +22,18 @@
   width: 4.3vw;
   display: inline-block;
   text-align: center;
-  vertical-align: -webkit-baseline-middle;
   vertical-align: middle;
+}
+.robotGrid2 td {
+  border: solid 1px #FFF;
+  width: 5%;
+  padding-bottom: 5%;
+  display: inline-block;
 }
 
 .robotGrid td.header {
   color: #000;
+  font-weight: bold;
 }
 
 p {
