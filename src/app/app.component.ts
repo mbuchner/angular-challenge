@@ -5,15 +5,19 @@ import { RobotService } from './services/robot.service';
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit  {
-  name = 'Angular';
-  constructor(private gridService: GridService, private robotService: RobotService){}
+export class AppComponent implements OnInit {
 
-   ngOnInit() { 
+  gridData: any[];
 
-     
-   }
+  constructor(private gridService: GridService, private robotService: RobotService) { }
+
+  ngOnInit() {
+    this.gridService.gridData$.subscribe((grid: any[]) => {
+      this.gridData = grid;
+    })
+
+  }
 
 }

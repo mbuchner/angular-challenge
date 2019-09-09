@@ -1,39 +1,10 @@
-<hello name="{{ name }}"></hello>
+
 <div class="mars">
 
-<table class="robotGrid">
-  <tr>
-    <td>
-      11
-    </td>
-        <td>
-      12
-    </td>
-        <td>
-      13
-    </td>
-        <td>
-      14
-    </td>
-        <td>
-      15
-    </td>
-  </tr>
-    <tr>
-    <td>
-      21
-    </td>
-        <td>
-      22
-    </td>
-        <td>
-      23
-    </td>
-        <td>
-      24
-    </td>
-        <td>
-      25
+<table class="robotGrid" *ngIf="gridData">
+  <tr *ngFor="let row of gridData; let r = index">
+    <td *ngFor="let cell of row; let c = index">
+      {{cell}}
     </td>
   </tr>
 </table>
