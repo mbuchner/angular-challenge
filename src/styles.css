@@ -1,1 +1,10 @@
 /* Add application styles & imports to this file! */
+
+.mars-surface {
+  background-image: url('/assets/images/mars.jpg');
+  background-color: #cccccc;
+  height: 500px; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+}
