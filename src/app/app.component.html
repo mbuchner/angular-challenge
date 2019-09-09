@@ -1,12 +1,16 @@
-
 <div class="mars">
 
-<table class="robotGrid" *ngIf="gridData">
-  <tr *ngFor="let row of gridData; let r = index">
-    <td *ngFor="let cell of row; let c = index">
-      {{cell}}
-    </td>
-  </tr>
-</table>
+	<table class="robotGrid" *ngIf="gridData">
+		<tr>
+			<td></td>
+			<td class="header" *ngFor="let row of gridData; let x = index">{{x}}</td>
+		</tr>
+		<tr *ngFor="let row of gridData; let r = index">
+			<td class="header">{{r}}</td>
+			<td *ngFor="let cell of row; let c = index">
+				{{cell}}
+			</td>
+		</tr>
+	</table>
 
 </div>

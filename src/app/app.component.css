@@ -17,13 +17,16 @@
 
 .robotGrid td {
   border: solid 1px #FFF;
-  height: 5vw;
-  width: 5vw;
+  height: 4.3vw;
+  width: 4.3vw;
   display: inline-block;
   text-align: center;
   vertical-align: -webkit-baseline-middle;
   vertical-align: middle;
+}
 
+.robotGrid td.header {
+  color: #000;
 }
 
 p {
