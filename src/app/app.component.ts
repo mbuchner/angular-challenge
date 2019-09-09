@@ -8,5 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent  {
   name = 'Angular';
 
-  bg = 'https://www.gettyimages.ie/gi-resources/images/Homepage/Hero/UK/CMS_Creative_164657191_Kingfisher.jpg';
 }
