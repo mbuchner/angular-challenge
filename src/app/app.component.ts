@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GridService } from './services/grid.service';
 import { RobotService } from './services/robot.service';
 
@@ -7,8 +7,13 @@ import { RobotService } from './services/robot.service';
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
 })
-export class AppComponent  {
+export class AppComponent implements OnInit  {
   name = 'Angular';
   constructor(private gridService: GridService, private robotService: RobotService){}
+
+   ngOnInit() { 
+
+     
+   }
 
 }
