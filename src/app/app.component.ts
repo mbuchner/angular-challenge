@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GridService } from './services/grid.service';
 
 @Component({
   selector: 'my-app',
@@ -7,5 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent  {
   name = 'Angular';
+  constructor(private gridService: GridService){}
 
 }
