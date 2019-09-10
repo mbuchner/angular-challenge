@@ -5,6 +5,8 @@ export class RobotService {
 
   position: Location;
 
+  measures: any[];
+
   location: {
     x: number;
     y: number;
@@ -13,6 +15,11 @@ export class RobotService {
   constructor() {
     this.location.x = 1;
     this.location.y = 2;
+  }
+
+  measure(){
+    // get value from gridservice
+    //this.measures.push(gridService.getValue(this.location));
   }
 
   moveUp() {
