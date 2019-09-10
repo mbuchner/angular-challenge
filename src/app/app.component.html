@@ -1,5 +1,5 @@
 <div class="mars">
-
+<!--
 	<table class="robotGrid" *ngIf="gridData">
 		<tr>
 			<td></td>
@@ -11,18 +11,34 @@
 				{{cell}}
 			</td>
 		</tr>
-	</table>
+	</table>-->
 
 	<div class="robotGrid" *ngIf="gridData">
+    <!-- draw header --> 
+		<div class="robotGridRow">
+      <div class="robotGridCell header"></div>
+			<div class="robotGridCell header" *ngFor="let row of gridData; let r = index">
+				{{r}}
+			</div>
+		</div>
+
+    <!-- draw grid --> 
 		<div class="robotGridRow" *ngFor="let row of gridData; let r = index">
-			<div class="robotGridCell" *ngFor="let cell of row; let c = index">
-        {{cell}}
+      <div class="robotGridCell header">{{r}}</div>
+			<div id="cell_{{r}}x{{c}}" class="robotGridCell" *ngFor="let cell of row; let c = index">
+				{{cell}}
 			</div>
 		</div>
 	</div>
 
+  <label>Measurements</label>
 	<div class="measurements">
 		1001011 1001010 10101010 10101111
+	</div>
+
+  <label>Console:</label>
+	<div class="console">
+		
 	</div>
 
 </div>
