@@ -24,16 +24,28 @@
   text-align: center;
   vertical-align: middle;
 }
-.robotGrid2 td {
+
+.robotGridRow {
+
+}
+
+.robotGridCell {
   border: solid 1px #FFF;
-  width: 5%;
-  padding-bottom: 5%;
+  height: 4.3vw;
+  width: 4.3vw;
   display: inline-block;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .robotGrid td.header {
   color: #000;
   font-weight: bold;
+}
+
+.measurements {
+  background-color: #FFF;
+  border: 1px solid #222;
 }
 
 p {

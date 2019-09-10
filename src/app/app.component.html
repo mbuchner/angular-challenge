@@ -13,4 +13,16 @@
 		</tr>
 	</table>
 
+	<div class="robotGrid" *ngIf="gridData">
+		<div class="robotGridRow" *ngFor="let row of gridData; let r = index">
+			<div class="robotGridCell" *ngFor="let cell of row; let c = index">
+        {{cell}}
+			</div>
+		</div>
+	</div>
+
+	<div class="measurements">
+		1001011 1001010 10101010 10101111
+	</div>
+
 </div>
