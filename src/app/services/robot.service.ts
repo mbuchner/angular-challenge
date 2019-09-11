@@ -7,10 +7,10 @@ export class RobotService {
 
   measures: any[];
 
-  location: {
-    x: number;
-    y: number;
-  }
+  location = {
+    x: 0,
+    y: 0
+  };
 
   constructor() {
     this.location.x = 1;
