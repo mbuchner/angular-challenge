@@ -25,7 +25,8 @@
     <!-- draw grid --> 
 		<div class="robotGridRow" *ngFor="let row of gridData; let r = index">
       <div class="robotGridCell header">{{r}}</div>
-			<div id="cell_{{r}}x{{c}}" class="robotGridCell" *ngFor="let cell of row; let c = index">
+			<div id="cell_{{c}}x{{r}}" class="robotGridCell" *ngFor="let cell of row; let c = index" 
+      [class.robot]="robotCell === c+'x'+r">
 				{{cell}}
 			</div>
 		</div>

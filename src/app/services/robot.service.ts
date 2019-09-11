@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
+import { GridService } from './grid.service';
+import { Observable, BehaviorSubject, combineLatest, empty, forkJoin, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class RobotService {
-
-  position: Location;
 
   measures: any[];
 
@@ -12,9 +12,12 @@ export class RobotService {
     y: 0
   };
 
-  constructor() {
+  location$ = new BehaviorSubject<any>(this.location);
+
+  constructor(private gridService: GridService) {
     this.location.x = 1;
     this.location.y = 2;
+    this.location$.next(this.location);
   }
 
   measure(){
@@ -25,6 +28,7 @@ export class RobotService {
   moveUp() {
     if (this.location.y != 0) {
       this.location.y = this.location.y - 1;
+      this.location$.next(this.location);
     } else {
       console.log("out of bounds");
     }
@@ -33,6 +37,7 @@ export class RobotService {
   moveDown() {
     if (this.location.y != 15) {
       this.location.y = this.location.y + 1;
+       this.location$.next(this.location);
     } else {
       console.log("out of bounds");
     }
@@ -41,6 +46,7 @@ export class RobotService {
   moveLeft() {
     if (this.location.x != 0) {
       this.location.x = this.location.x - 1;
+       this.location$.next(this.location);
     } else {
       console.log("out of bounds");
     }
@@ -49,6 +55,7 @@ export class RobotService {
   moveRight() {
     if (this.location.x != 15) {
       this.location.x = this.location.x + 1;
+       this.location$.next(this.location);
     } else {
       console.log("out of bounds");
     }

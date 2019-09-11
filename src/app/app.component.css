@@ -1,6 +1,7 @@
 
 .robotGridCell.robot {
    border: solid 1px rgb(147, 4, 4);
+   background-color: rgba(166, 33, 33, 0.5);
 }
 
 .mars {
@@ -62,22 +63,3 @@ label {
   padding: 3px;
   margin: 10px;
 }
-/*
-p {
-  font-family: Lato;
-}
-
-.robotGrid td.header {
-  color: #000;
-  font-weight: bold;
-}
-
-.robotGrid td {
-  border: solid 1px #FFF;
-  height: 4.3vw;
-  width: 4.3vw;
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
-}
-*/
