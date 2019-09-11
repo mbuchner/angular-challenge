@@ -1,16 +1,16 @@
 
 .robotGridCell.robot {
-   border: solid 1px rgb(147, 4, 4);
-   background-color: rgba(166, 33, 33, 0.5);
+  border: solid 1px rgb(147, 4, 4);
+  background-color: rgba(166, 33, 33, 0.5);
+  box-sizing: border-box;
 }
 
 .mars {
   background-image: url('https://cdn.jsdelivr.net/gh/mbuchner/angular-challenge@master/src/assets/mars.jpg');
   background-color: #cccccc;
-  background-position: left; 
   background-repeat: no-repeat; 
   background-size: cover;
-  height: 100vh;
+  height: 100%;
 }
 
 .robotGrid {
@@ -19,7 +19,7 @@
   border-spacing: 0px;
   border-collapse: collapse;
   width: 100%;
-  padding: 10px;
+  
 }
 
 .robotGridRow {
@@ -27,7 +27,7 @@
 }
 
 .robotGridCell {
-  border: solid 1px #FFF;
+  border: solid 1px rgba(255, 255, 255, 0.5);
   box-sizing: border-box;
   height: 5.4vw;
   width: 5.4vw;

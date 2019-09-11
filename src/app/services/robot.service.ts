@@ -1,22 +1,19 @@
 import { Injectable } from '@angular/core';
 import { GridService } from './grid.service';
 import { Observable, BehaviorSubject, combineLatest, empty, forkJoin, of } from 'rxjs';
+import { Location } from '../model/location.model';
 
 @Injectable({ providedIn: 'root' })
 export class RobotService {
 
   measures: any[];
 
-  location = {
-    x: 0,
-    y: 0
-  };
+  location = {} as Location;
 
   location$ = new BehaviorSubject<any>(this.location);
 
   constructor(private gridService: GridService) {
-    this.location.x = 1;
-    this.location.y = 2;
+    this.location = { x:0, y:0 };
     this.location$.next(this.location);
   }
 
