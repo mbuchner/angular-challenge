@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { GridService } from './services/grid.service';
 import { RobotService } from './services/robot.service';
+import { Location } from './model/location.model';
 
 @Component({
   selector: 'my-app',
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit {
       this.gridData = grid;
     });
 
-    this.robotService.location$.subscribe((location: any) => {
+    this.robotService.location$.subscribe((location: Location) => {
       this.robotCell = location.x + "x" + location.y;
     });
   }
