@@ -40,9 +40,9 @@ export class GridService {
       .catch((err) => console.log(err));
   }
 
-  readGridValue(location: Location) {
+  readGridValue(location: Location): string {
     const row: any[] = this.gridData[location.y];
-    return row[location.x];
+    return row[location.x].charCodeAt(0).toString(2);
   }
 
 }

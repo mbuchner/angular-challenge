@@ -12,7 +12,7 @@ export class RobotService {
 
   location$ = new BehaviorSubject<any>(this.location);
 
-  measures$ = new BehaviorSubject<any>(this.measures);
+  measures$ = new BehaviorSubject<any[]>(this.measures);
 
   constructor(private gridService: GridService) {
     this.location = { x: 10, y: 3 };
@@ -21,7 +21,7 @@ export class RobotService {
 
   measure() {
     this.measures.push(this.gridService.readGridValue(this.location));
-    this.measures$.next(this.measures);
+    this.measures$.next(Object.assign([], this.measures));
   }
 
   moveUp() {

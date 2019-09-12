@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  play(){
+  play() {
     // Hi Challenger!
     // Welcome to the mars robot challenge! We already have prepared  
     // the services and data for you but this function is still missing. 
@@ -44,8 +44,15 @@ export class AppComponent implements OnInit {
     // on the mars and measure after every move.
     // The "robotService" provides you with the required funtions.
     // (moveUp, moveDown, moveLeft, moveRight, measure)
-this.robotService.moveDown();
-this.robotService.measure();
+    this.robotService.moveDown();
+    this.robotService.measure();
+    this.robotService.moveLeft();
+    this.robotService.measure();
+    this.robotService.moveUp();
+    this.robotService.measure();
+    this.robotService.moveRight();
+    this.robotService.measure();
+
   }
 
   @HostListener('window:keydown', ['$event'])

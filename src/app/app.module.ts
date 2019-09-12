@@ -6,10 +6,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { GridService } from './services/grid.service';
 import { RobotService } from './services/robot.service';
+import { ReplacePipe } from './replace.pipe';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, HttpClientModule ],
-  declarations: [ AppComponent ],
+  declarations: [ AppComponent, ReplacePipe ],
   bootstrap:    [ AppComponent ],
   providers: [ GridService, RobotService ],
 })
