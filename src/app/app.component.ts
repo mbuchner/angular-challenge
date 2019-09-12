@@ -44,7 +44,8 @@ export class AppComponent implements OnInit {
     // on the mars and measure after every move.
     // The "robotService" provides you with the required funtions.
     // (moveUp, moveDown, moveLeft, moveRight, measure)
-
+this.robotService.moveDown();
+this.robotService.measure();
   }
 
   @HostListener('window:keydown', ['$event'])

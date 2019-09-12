@@ -23,6 +23,7 @@ export class GridService {
     return this.http.get<any[]>("./assets/grid.json")
       .toPromise()
       .then((gridData: any[]) => {
+        this.gridData = gridData;
         this.gridData$.next(gridData);
         console.log('Grid data fetched: ', gridData);
       })
