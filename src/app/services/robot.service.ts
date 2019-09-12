@@ -19,9 +19,12 @@ export class RobotService {
     this.publishLocation();
   }
 
-  measure() {
+  async measure() {
+ //   await new Promise(resolve => {
+ //           setTimeout(()=> {
     this.measures.push(this.gridService.readGridValue(this.location));
     this.measures$.next(Object.assign([], this.measures));
+  //          }, 500)});
   }
 
   moveUp() {

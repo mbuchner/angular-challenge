@@ -25,7 +25,7 @@ export class GridService {
       .then((gridData: any[]) => {
         this.gridData = gridData;
         this.gridData$.next(gridData);
-        console.log('Grid data fetched: ', gridData);
+        console.log('Grid data fetched!');
       })
       .catch((err) => console.log(err));
   }
@@ -35,7 +35,7 @@ export class GridService {
       .toPromise()
       .then((instructionSet: any[]) => {
         this.instructionSet$.next(instructionSet);
-        console.log('IinstructionSet fetched: ', instructionSet);
+        console.log('IinstructionSet fetched!');
       })
       .catch((err) => console.log(err));
   }
