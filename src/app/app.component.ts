@@ -12,6 +12,8 @@ export class AppComponent implements OnInit {
 
   gridData: any[];
 
+  instructionSet: any[];
+
   robotCell: string = "10x10";
 
   constructor(private gridService: GridService, private robotService: RobotService) { }
@@ -20,15 +22,20 @@ export class AppComponent implements OnInit {
     this.gridService.gridData$.subscribe((grid: any[]) => {
       this.gridData = grid;
     });
-
+    this.gridService.instructionSet$.subscribe((instructions: any[]) => {
+      this.instructionSet = instructions;
+    });
     this.robotService.location$.subscribe((location: Location) => {
       this.robotCell = location.x + "x" + location.y;
     });
   }
 
+  play(){
+
+  }
+
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
-    // event.key === 'ArrowUp'
     if (event.key === 'ArrowUp') {
       this.robotService.moveUp();
     } else if (event.key === 'ArrowDown') {
