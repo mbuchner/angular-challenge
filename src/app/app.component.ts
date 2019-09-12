@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 
   instructionSet: any[];
 
-  robotCell: string = "10x10";
+  robotCell: string;
 
   constructor(private gridService: GridService, private robotService: RobotService) { }
 
@@ -31,6 +31,14 @@ export class AppComponent implements OnInit {
   }
 
   play(){
+    // Hi Challenger!
+    // Welcome to the mars robot challenge! We already have prepared  
+    // the services and data for you but this function is still missing. 
+    // It can be triggered by pressing the play button in HTML.
+    // Based on the "instructionSet" you should navigate the robot 
+    // on the mars and measure after every move.
+    // The "robotService" provides you with the required funtions.
+    // (moveUp, moveDown, moveLeft, moveRight, measure)
 
   }
 

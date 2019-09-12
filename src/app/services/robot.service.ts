@@ -13,7 +13,7 @@ export class RobotService {
   location$ = new BehaviorSubject<any>(this.location);
 
   constructor(private gridService: GridService) {
-    this.location = { x: 0, y: 0 };
+    this.location = { x: 10, y: 3 };
     this.publishLocation();
   }
 
