@@ -10,11 +10,13 @@ import { Location } from './model/location.model';
 })
 export class AppComponent implements OnInit {
 
+  robotCell: string;
+
   gridData: any[];
 
   instructionSet: any[];
 
-  robotCell: string;
+  measures: any[];
 
   constructor(private gridService: GridService, private robotService: RobotService) { }
 
@@ -27,6 +29,9 @@ export class AppComponent implements OnInit {
     });
     this.robotService.location$.subscribe((location: Location) => {
       this.robotCell = location.x + "x" + location.y;
+    });
+    this.robotService.measures$.subscribe((measures: any[]) => {
+      this.measures = measures;
     });
   }
 

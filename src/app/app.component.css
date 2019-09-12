@@ -4,6 +4,7 @@
   background-repeat: no-repeat; 
   background-size: cover;
   height: 100%;
+  padding: 1vw;
 }
 
 .robotGrid {
@@ -12,11 +13,11 @@
   border-spacing: 0px;
   border-collapse: collapse;
   width: 100%;
-  padding: 1vw;
 }
 
 .robotGridCell {
   border: solid 1px rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.5);
   box-sizing: border-box;
   height: 5.6vw;
   width: 5.6vw;

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, combineLatest, empty, forkJoin, of } from 'rxjs';
 import { catchError, map, mapTo, startWith, switchMap, tap } from 'rxjs/operators';
+import { Location } from './../model/location.model';
 
 @Injectable({ providedIn: 'root' })
 export class GridService {
@@ -28,7 +29,7 @@ export class GridService {
       .catch((err) => console.log(err));
   }
 
-    fetchInstructionSet(): Promise<any> {
+  fetchInstructionSet(): Promise<any> {
     return this.http.get<any[]>("./assets/instructionSet.json")
       .toPromise()
       .then((instructionSet: any[]) => {
@@ -38,5 +39,9 @@ export class GridService {
       .catch((err) => console.log(err));
   }
 
+  readGridValue(location: Location) {
+    const row: any[] = this.gridData[location.y];
+    return row[location.x];
+  }
 
 }

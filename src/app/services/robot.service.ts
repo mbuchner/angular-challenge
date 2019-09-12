@@ -6,11 +6,13 @@ import { Location } from './../model/location.model';
 @Injectable({ providedIn: 'root' })
 export class RobotService {
 
-  measures: any[];
+  measures = [] as any[];
 
   location = {} as Location;
 
   location$ = new BehaviorSubject<any>(this.location);
+
+  measures$ = new BehaviorSubject<any>(this.measures);
 
   constructor(private gridService: GridService) {
     this.location = { x: 10, y: 3 };
@@ -18,8 +20,8 @@ export class RobotService {
   }
 
   measure() {
-    // get value from gridservice
-    //this.measures.push(gridService.getValue(this.location));
+    this.measures.push(this.gridService.readGridValue(this.location));
+    this.measures$.next(this.measures);
   }
 
   moveUp() {
