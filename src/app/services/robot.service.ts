@@ -70,4 +70,7 @@ export class RobotService {
     this.doMove$.next({ x: 1, y: 0 });
   }
 
+  cleanup() {
+  }
+
 }

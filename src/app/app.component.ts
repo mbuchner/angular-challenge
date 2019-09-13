@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   measures: string;
 
   play() {
+    this.robotService.cleanup();
     // Hi Challenger!
     // Welcome to the mars robot challenge! We already have prepared  
     // the services and data for you but this function is still missing. 

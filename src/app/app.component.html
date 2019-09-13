@@ -1,6 +1,6 @@
 <div class="mars">
 
-	<div class="robotGrid" *ngIf="gridData">
+	<div class="robotGrid" *ngIf="gridData$ | async as gridData">
 		<div class="robotGridRow">
 			<div class="robotGridCell header" (click)="play()">
 				<i class="fa fa-play" style="font-size:22px; color: green"></i>
@@ -24,6 +24,4 @@
 		{{measures}}
 	</div>
   <br>
-  <div>Icons made by <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>
-
 </div>
