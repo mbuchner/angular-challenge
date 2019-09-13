@@ -2,7 +2,7 @@
 
 	<div class="robotGrid" *ngIf="gridData$ | async as gridData">
 		<div class="robotGridRow">
-			<div class="robotGridCell header" (click)="play()">
+			<div class="robotGridCell header" (click)="reset(); play()" (touchend)="reset(); play()">
 				<i class="fa fa-play" style="font-size:22px; color: green"></i>
       </div>
 			<div class="robotGridCell header" *ngFor="let row of gridData; let r = index">

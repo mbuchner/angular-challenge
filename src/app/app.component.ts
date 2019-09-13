@@ -19,7 +19,6 @@ export class AppComponent implements OnInit {
   measures: string;
 
   play() {
-    this.robotService.cleanup();
     // Hi Challenger!
     // Welcome to the mars robot challenge! We already have prepared  
     // the services and data for you but this function is still missing. 
@@ -28,19 +27,23 @@ export class AppComponent implements OnInit {
     // on the mars and measure after every move.
     // The "robotService" provides you with the required funtions.
     // (moveUp, moveDown, moveLeft, moveRight, measure)
-    this.robotService.moveDown();
-    this.robotService.measure();
-    this.robotService.moveLeft();
-    this.robotService.measure();
-    this.robotService.moveUp();
-    this.robotService.measure();
-    this.robotService.moveRight();
-    this.robotService.measure();
-    this.robotService.moveRight();
-    this.robotService.measure();
-    this.robotService.moveRight();
-    this.robotService.measure();
+    const actions = [
+      () => this.robotService.moveDown(),
+      () => this.robotService.moveUp(),
+      () => this.robotService.moveLeft(),
+      () => this.robotService.moveRight(),
+      () => this.robotService.measure(),
+    ];
+    for (let i = 0; i < 5; i++) {
+      const rand = Math.floor(Math.random() * 4);
+      actions[rand]();
+      this.robotService.measure();
+    }
+  }
 
+  reset() {
+    this.robotService.reset();
+    this.measures = "";
   }
 
   constructor(private gridService: GridService, private robotService: RobotService) { }
