@@ -7,13 +7,9 @@ import { Location } from './../model/location.model';
 @Injectable({ providedIn: 'root' })
 export class GridService {
 
-  gridData: any[];
+  gridData$ = new BehaviorSubject<any[]>(undefined);
 
-  instructionSet: any[];
-
-  gridData$ = new BehaviorSubject<any[]>(this.gridData);
-
-  instructionSet$ = new BehaviorSubject<any[]>(this.instructionSet);
+  instructionSet$ = new BehaviorSubject<any[]>(undefined);
 
   constructor(private http: HttpClient) {
     this.fetchGridData();
@@ -23,7 +19,6 @@ export class GridService {
     return this.http.get<any[]>("./assets/grid.json")
       .toPromise()
       .then((gridData: any[]) => {
-        this.gridData = gridData;
         this.gridData$.next(gridData);
         console.log('Grid data fetched!');
       })
@@ -41,7 +36,7 @@ export class GridService {
   }
 
   readGridValue(location: Location): string {
-    const row: any[] = this.gridData[location.y];
+    const row: any[] = this.gridData$.value[location.y];
     return row[location.x].charCodeAt(0).toString(2);
   }
 

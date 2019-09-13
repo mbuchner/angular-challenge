@@ -1,70 +1,73 @@
 import { Injectable } from '@angular/core';
 import { GridService } from './grid.service';
-import { Observable, BehaviorSubject, combineLatest, empty, forkJoin, of } from 'rxjs';
+import { Observable, BehaviorSubject, Subject, combineLatest, empty, forkJoin, of, merge } from 'rxjs';
+import { scan, filter, startWith, map, shareReplay, switchMap, first, delay, concatAll } from 'rxjs/operators';
 import { Location } from './../model/location.model';
+
+const wait = (timeout: number) => new Promise<void>(res => setTimeout(res, timeout));
+
+type Action = {
+  what: 'move' | 'measure';
+  data: { x, y };
+}
+
+type Move = {
+  x: number;
+  y: number;
+}
 
 @Injectable({ providedIn: 'root' })
 export class RobotService {
 
-  measures = [] as any[];
+  private doMove$ = new Subject<Move>();
 
-  location = {} as Location;
+  private doMeasure$ = new Subject<void>();
 
-  location$ = new BehaviorSubject<any>(this.location);
+  private actions$ = merge(this.doMove$, this.doMeasure$).pipe(
+    map(what => of(what).pipe(delay(300))),
+    concatAll(),
+  );
 
-  measures$ = new BehaviorSubject<any[]>(this.measures);
+  location$ = this.actions$.pipe(
+    filter(action => !!action),
+    startWith({ x: 10, y: 3 } as Move),
+    scan<Move, Location>((location, move) => {
+      const newLocation = { x: location.x + move.x, y: location.y + move.y };
+      if (newLocation.x < 0 || newLocation.x > 14 || newLocation.y < 0 || newLocation.y > 14) return location;
+      return newLocation;
+    }, { x: 0, y: 0 } as Location),
+    shareReplay(1),
+  );
+
+  measures$ = this.actions$.pipe(
+    filter(action => !action),
+    switchMap(() => this.location$.pipe(first())),
+    scan((measures, location) => {
+      return [...measures, this.gridService.readGridValue(location)];
+    }, [] as string[]),
+  );
 
   constructor(private gridService: GridService) {
-    this.location = { x: 10, y: 3 };
-    this.publishLocation();
   }
 
   async measure() {
- //   await new Promise(resolve => {
- //           setTimeout(()=> {
-    this.measures.push(this.gridService.readGridValue(this.location));
-    this.measures$.next(Object.assign([], this.measures));
-  //          }, 500)});
+    this.doMeasure$.next(undefined);
   }
 
   moveUp() {
-    if (this.location.y != 0) {
-      this.location.y = this.location.y - 1;
-      this.publishLocation();
-    } else {
-      console.log("out of bounds");
-    }
+    this.doMove$.next({ x: 0, y: -1 });
   }
 
   moveDown() {
-    if (this.location.y != 15) {
-      this.location.y = this.location.y + 1;
-      this.publishLocation();
-    } else {
-      console.log("out of bounds");
-    }
+    this.doMove$.next({ x: 0, y: 1 });
   }
 
   moveLeft() {
-    if (this.location.x != 0) {
-      this.location.x = this.location.x - 1;
-      this.publishLocation();
-    } else {
-      console.log("out of bounds");
-    }
+    this.doMove$.next({ x: -1, y: 0 });
   }
 
   moveRight() {
-    if (this.location.x != 15) {
-      this.location.x = this.location.x + 1;
-      this.publishLocation();
-    } else {
-      console.log("out of bounds");
-    }
-  }
-
-  publishLocation() {
-    this.location$.next(Object.assign({}, this.location));
+    this.doMove$.next({ x: 1, y: 0 });
   }
 
 }

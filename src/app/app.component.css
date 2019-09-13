@@ -30,6 +30,8 @@
   border: solid 1px rgb(147, 4, 4);
   background-color: rgba(166, 33, 33, 0.5);
   box-sizing: border-box;
+  background-image: url('https://cdn.jsdelivr.net/gh/mbuchner/angular-challenge@master/src/assets/mars-rover.svg');
+
 }
 
 .robotGridCell.header {

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -6,11 +7,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { GridService } from './services/grid.service';
 import { RobotService } from './services/robot.service';
-import { ReplacePipe } from './replace.pipe';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, HttpClientModule ],
-  declarations: [ AppComponent, ReplacePipe ],
+  imports:      [ CommonModule, BrowserModule, FormsModule, HttpClientModule ],
+  declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ GridService, RobotService ],
 })

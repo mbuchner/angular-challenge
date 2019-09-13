@@ -2,8 +2,8 @@
 
 	<div class="robotGrid" *ngIf="gridData">
 		<div class="robotGridRow">
-      <div class="robotGridCell header" (click)="play()">
-        <i class="fa fa-play" style="font-size:22px; color: green"></i>
+			<div class="robotGridCell header" (click)="play()">
+				<i class="fa fa-play" style="font-size:22px; color: green"></i>
       </div>
 			<div class="robotGridCell header" *ngFor="let row of gridData; let r = index">
 				{{r}}
@@ -21,8 +21,9 @@
   <br>
   <label>Measurements</label>
 	<div class="measurements">
-		{{measures | replace:',':' '}}
+		{{measures}}
 	</div>
   <br>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a> from <a href="https://www.flaticon.com/"             title="Flaticon">www.flaticon.com</a></div>
 
 </div>

@@ -12,11 +12,11 @@ export class AppComponent implements OnInit {
 
   robotCell: string;
 
-  gridData: any[];
+  gridData$ = this.gridService.gridData$;
 
-  instructionSet: any[];
+  instructionSet$ = this.gridService.instructionSet$;
 
-  measures: any[];
+  measures: string;
 
   play() {
     // Hi Challenger!
@@ -35,23 +35,21 @@ export class AppComponent implements OnInit {
     this.robotService.measure();
     this.robotService.moveRight();
     this.robotService.measure();
+    this.robotService.moveRight();
+    this.robotService.measure();
+    this.robotService.moveRight();
+    this.robotService.measure();
 
   }
 
   constructor(private gridService: GridService, private robotService: RobotService) { }
 
   ngOnInit() {
-    this.gridService.gridData$.subscribe((grid: any[]) => {
-      this.gridData = grid;
-    });
-    this.gridService.instructionSet$.subscribe((instructions: any[]) => {
-      this.instructionSet = instructions;
-    });
     this.robotService.location$.subscribe((location: Location) => {
       this.robotCell = location.x + "x" + location.y;
     });
     this.robotService.measures$.subscribe((measures: any[]) => {
-      this.measures = measures;
+      this.measures = measures && measures.join(' ') || '\u00a0';
     });
   }
 
