@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
 
   gridData$ = this.gridService.gridData$;
 
+  instructionSet: string[];
+
   instructionSet$ = this.gridService.instructionSet$;
 
   measures: string;
@@ -27,23 +29,29 @@ export class AppComponent implements OnInit {
     // on the mars and measure after every move.
     // The "robotService" provides you with the required funtions.
     // (moveUp, moveDown, moveLeft, moveRight, measure)
-    const actions = [
-      () => this.robotService.moveDown(),
-      () => this.robotService.moveUp(),
-      () => this.robotService.moveLeft(),
-      () => this.robotService.moveRight(),
-      () => this.robotService.measure(),
-    ];
-    for (let i = 0; i < 5; i++) {
-      const rand = Math.floor(Math.random() * 4);
-      actions[rand]();
-      this.robotService.measure();
-    }
-  }
 
-  reset() {
-    this.robotService.reset();
-    this.measures = "";
+    this.robotService.measure();
+    this.instructionSet.forEach(instruction => {
+      switch (instruction) {
+        case "UP": {
+          this.robotService.moveUp();
+          break;
+        }
+        case "RIGHT": {
+           this.robotService.moveRight();
+          break;
+        }
+        case "DOWN": {
+           this.robotService.moveDown();
+          break;
+        }
+        case "LEFT": {
+           this.robotService.moveLeft();
+          break;
+        }
+      }
+      this.robotService.measure();
+      });
   }
 
   constructor(private gridService: GridService, private robotService: RobotService) { }
@@ -55,6 +63,13 @@ export class AppComponent implements OnInit {
     this.robotService.measures$.subscribe((measures: any[]) => {
       this.measures = measures && measures.join(' ') || '\u00a0';
     });
+    this.gridService.instructionSet$.subscribe((instructions: any[]) => {
+      this.instructionSet = instructions;
+    });
+  }
+
+  reset() {
+    this.robotService.reset();
   }
 
   @HostListener('window:keydown', ['$event'])
