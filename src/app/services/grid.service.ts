@@ -13,6 +13,7 @@ export class GridService {
 
   constructor(private http: HttpClient) {
     this.fetchGridData();
+    this.fetchInstructionSet();
   }
 
   fetchGridData(): Promise<any> {
@@ -30,7 +31,7 @@ export class GridService {
       .toPromise()
       .then((instructionSet: any[]) => {
         this.instructionSet$.next(instructionSet);
-        console.log('IinstructionSet fetched!');
+        console.log('InstructionSet fetched!');
       })
       .catch((err) => console.log(err));
   }
