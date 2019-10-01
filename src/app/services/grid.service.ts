@@ -38,7 +38,7 @@ export class GridService {
 
   readGridValue(location: Location): string {
     const row: any[] = this.gridData$.value[location.y];
-    return row[location.x].charCodeAt(0).toString(2);
+    return row[location.x].charCodeAt(0).toString(2).padStart(8, '0');
   }
 
 }

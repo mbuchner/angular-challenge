@@ -35,7 +35,6 @@ export class AppComponent implements OnInit {
 
     this.robotService.measure();
     //...
-
   }
 
   constructor(private gridService: GridService, private robotService: RobotService) { }
