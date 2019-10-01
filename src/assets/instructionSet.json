@@ -1,1 +1,12 @@
-["UP", "RIGHT", "RIGHT", "DOWN", "UP", "LEFT", "LEFT", "DOWN" ]
+["UP", "UP", "LEFT", "LEFT", "LEFT", 
+"UP", "LEFT", "UP", "LEFT", "LEFT", 
+"DOWN", "LEFT", "DOWN", "LEFT", "UP", 
+"UP", "UP", "RIGHT", "UP", "RIGHT", 
+"RIGHT", "UP", "RIGHT", "DOWN", "RIGHT", 
+"DOWN", "RIGHT", "RIGHT", "UP", "RIGHT", 
+"RIGHT", "DOWN", "LEFT", "DOWN", "RIGHT", 
+"RIGHT", "RIGHT",  "UP", "RIGHT", "DOWN", 
+"DOWN", "DOWN", "LEFT", "DOWN", "LEFT", 
+"DOWN", "DOWN", "DOWN", "LEFT", "LEFT", 
+"DOWN", "LEFT", "LEFT", "UP", "LEFT", "LEFT"
+]

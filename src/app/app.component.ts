@@ -21,37 +21,21 @@ export class AppComponent implements OnInit {
   measures: string;
 
   play() {
-    // Hi Challenger!
+    // So far so good!
     // Welcome to the mars robot challenge! We already have prepared  
     // the services and data for you but this function is still missing. 
-    // It can be triggered by pressing the play button in HTML.
-    // Based on the "instructionSet" you should navigate the robot 
-    // on the mars and measure after every move.
-    // The "robotService" provides you with the required funtions.
+    // It can be triggered by pressing the play button in the HTMLv view.
+    // Based on the "instructionSet" ("RIGHT", "UP", "RIGHT", ...) 
+    // you should navigate the robot on mars and measure after every move.
+    // The "robotService" provides you with the required functions.
     // (moveUp, moveDown, moveLeft, moveRight, measure)
+    // Finally use the measuements and proceed to the next challenge ...
+
+    console.log(this.instructionSet);
 
     this.robotService.measure();
-    this.instructionSet.forEach(instruction => {
-      switch (instruction) {
-        case "UP": {
-          this.robotService.moveUp();
-          break;
-        }
-        case "RIGHT": {
-           this.robotService.moveRight();
-          break;
-        }
-        case "DOWN": {
-           this.robotService.moveDown();
-          break;
-        }
-        case "LEFT": {
-           this.robotService.moveLeft();
-          break;
-        }
-      }
-      this.robotService.measure();
-      });
+    //...
+
   }
 
   constructor(private gridService: GridService, private robotService: RobotService) { }
@@ -71,18 +55,4 @@ export class AppComponent implements OnInit {
   reset() {
     this.robotService.reset();
   }
-
-  @HostListener('window:keydown', ['$event'])
-  handleKeyDown(event: KeyboardEvent) {
-    if (event.key === 'ArrowUp') {
-      this.robotService.moveUp();
-    } else if (event.key === 'ArrowDown') {
-      this.robotService.moveDown();
-    } else if (event.key === 'ArrowRight') {
-      this.robotService.moveRight();
-    } else if (event.key === 'ArrowLeft') {
-      this.robotService.moveLeft();
-    }
-  }
-
 }

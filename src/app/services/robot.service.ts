@@ -28,7 +28,7 @@ export class RobotService {
   location$ = this.reset$.pipe(
     switchMap(() => this.actions$.pipe(
       filter(action => !!action),
-      startWith({ x: 10, y: 3 } as Move),
+      startWith({ x: 10, y: 10 } as Move),
       scan<Move, Location>((location, move) => {
         const newLocation = { x: location.x + move.x, y: location.y + move.y };
         if (newLocation.x < 0 || newLocation.x > 15 || newLocation.y < 0 || newLocation.y > 15) return location;
